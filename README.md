@@ -76,7 +76,8 @@ There are two issues with this approach:
 1. **The automatic conversion isn't quite right** - For example, as was noted above, enumeration
 types don't match the associated parameters in function signatures. A better approach might be to
 code-generate these bindings using NI-DAQmx API metadata rather than leveraging bindgen.
-Unfortunately, the NI-DAQmx API metadata is not publicly available.
+DAQmx API metadata can be found at
+[ni/grpc-device@GitHub:/source/codegen/metadata/nidaqmx](https://github.com/ni/grpc-device/tree/main/source/codegen/metadata/nidaqmx).
 2. **The API isn't very Rust-like** - Raw `unsafe` function wrappers using C types is a big chore to
 use in a proper Rust program. That is why creating a richer abstraction is desirable. The next
 proof-of-concept demonstrates that.
@@ -123,5 +124,6 @@ assert_eq!(ai0.name, "Dev1/ai1");
 
 The implementation is partial at-best, but shows off how you could build the rest of the API using
 these same concepts. In the future, this could be completely code-generated using metadata that
-describes the NI-DAQmx API. Unfortunately, the NI-DAQmx API metadata is not publicly available. In
-the short-term, users could add the features they require manually over time.
+describes the NI-DAQmx API. DAQmx API metadata can be found at
+[ni/grpc-device@GitHub:/source/codegen/metadata/nidaqmx](https://github.com/ni/grpc-device/tree/main/source/codegen/metadata/nidaqmx).
+In the short-term, users could add the features they require manually over time.
